@@ -1,0 +1,9 @@
+{
+  "country": "PE",
+  "airportIata": "LIM",
+  "terminal": null,
+  "description": "Dato de ejemplo: módulo de devolución del IGV, Aeropuerto Jorge Chávez (Lima), salidas internacionales.",
+  "lat": -12.0219,
+  "lon": -77.1143,
+  "openingHours": "Por verificar"
+}

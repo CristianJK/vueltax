@@ -1,0 +1,9 @@
+{
+  "country": "CO",
+  "airportIata": "MDE",
+  "terminal": null,
+  "description": "Dato de ejemplo: punto de atención de la DIAN, Aeropuerto José María Córdova (Rionegro).",
+  "lat": 6.1645,
+  "lon": -75.4231,
+  "openingHours": "Por verificar"
+}

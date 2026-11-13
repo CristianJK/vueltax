@@ -1,0 +1,9 @@
+{
+  "country": "MX",
+  "airportIata": "CUN",
+  "terminal": "T3",
+  "description": "Dato de ejemplo: módulo de devolución de IVA, Aeropuerto Internacional de Cancún, Terminal 3.",
+  "lat": 21.0365,
+  "lon": -86.8771,
+  "openingHours": "Por verificar"
+}

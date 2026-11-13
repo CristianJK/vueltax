@@ -1,0 +1,9 @@
+{
+  "country": "CO",
+  "airportIata": "CTG",
+  "terminal": null,
+  "description": "Dato de ejemplo: punto de atención de la DIAN, Aeropuerto Rafael Núñez (Cartagena).",
+  "lat": 10.4424,
+  "lon": -75.5130,
+  "openingHours": "Por verificar"
+}

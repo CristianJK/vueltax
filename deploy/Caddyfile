@@ -1,0 +1,19 @@
+# Proxy HTTPS delante de la API. Con un dominio real en SITE_ADDRESS, Caddy obtiene y
+# renueva el certificado solo; con "localhost" usa un certificado interno.
+#
+# No hay directiva `log`: Caddy no escribe logs de acceso, así que no guarda IPs.
+{$SITE_ADDRESS:localhost} {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options nosniff
+		-Server
+	}
+
+	# La administración no se publica en internet: solo por 127.0.0.1 en el servidor.
+	@admin path /v1/admin /v1/admin/*
+	respond @admin 404
+
+	reverse_proxy api:8080
+}

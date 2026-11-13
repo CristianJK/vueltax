@@ -1,0 +1,9 @@
+{
+  "country": "CO",
+  "airportIata": "BOG",
+  "terminal": "T1",
+  "description": "Dato de ejemplo: punto de atención de la DIAN, Aeropuerto El Dorado (Bogotá), salidas internacionales.",
+  "lat": 4.7016,
+  "lon": -74.1469,
+  "openingHours": "Por verificar"
+}

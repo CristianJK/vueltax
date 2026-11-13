@@ -1,0 +1,9 @@
+{
+  "country": "MX",
+  "airportIata": "MEX",
+  "terminal": "T2",
+  "description": "Dato de ejemplo: módulo de devolución de IVA, Aeropuerto Internacional de la Ciudad de México, Terminal 2.",
+  "lat": 19.4204,
+  "lon": -99.0822,
+  "openingHours": "Por verificar"
+}

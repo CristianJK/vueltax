@@ -87,8 +87,8 @@ No se escribe el literal `"Vueltax"` en ningún otro punto del código.
 
 ## Comandos
 
-> Los módulos Gradle aún no existen; estos son los comandos previstos y deben
-> verificarse (y corregirse aquí) cuando se creen `android/` y `backend/`.
+> El módulo `android/` aún no existe; sus comandos son los previstos y deben
+> verificarse (y corregirse aquí) cuando se cree.
 
 Android (desde `android/`):
 
@@ -97,12 +97,12 @@ Android (desde `android/`):
 ./gradlew test                 # pruebas unitarias
 ```
 
-Backend (desde `backend/`):
+Backend (desde `backend/`, JDK 17+; verificado):
 
 ```
-./gradlew build                # compilar
-./gradlew test                 # pruebas
-./gradlew run                  # levantar la API en local
+./gradlew build                # compilar y correr las pruebas
+./gradlew test                 # pruebas (Testcontainers: requiere Docker en marcha)
+./gradlew run                  # levantar la API en local (ver variables en backend/README.md)
 ```
 
 Reglas (desde `rules/`, requiere Node; verificado):
@@ -112,11 +112,12 @@ npm install                    # una vez
 npm test                       # valida CO/PE/MX.json contra schema.json
 ```
 
-Base de datos y despliegue local (desde `deploy/`):
+Despliegue con Docker (desde `deploy/`, con `.env` creado a partir de `.env.example`; verificado):
 
 ```
-docker compose up -d           # levantar PostgreSQL (y el backend, si aplica)
-docker compose down            # detener
+docker compose up -d --build   # PostgreSQL + API + Caddy (HTTPS)
+./seed.sh                      # carga rules/*.json y puntos de devolución de ejemplo
+docker compose down            # detener (los datos quedan en el volumen)
 ```
 
 En Windows, usar `.\gradlew.bat` en lugar de `./gradlew`.
