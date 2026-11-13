@@ -34,6 +34,9 @@ out/
 !.env.example
 docker-compose.override.yml
 
+# Node (validación de rules/)
+node_modules/
+
 # Logs
 *.log
 

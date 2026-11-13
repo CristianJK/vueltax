@@ -1,0 +1,13 @@
+{
+  "name": "vueltax-rules",
+  "private": true,
+  "type": "module",
+  "description": "Reglas de devolución de impuestos por país y su validación contra el schema.",
+  "scripts": {
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

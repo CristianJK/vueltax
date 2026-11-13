@@ -1,0 +1,67 @@
+{
+  "$schema": "./schema.json",
+  "country": "PE",
+  "currency": "PEN",
+  "taxName": "IGV",
+  "standardRate": 18,
+  "refundAuthority": {
+    "type": "partner_entity",
+    "name": "Global Blue Perú"
+  },
+  "amountUnit": {
+    "type": "local_currency"
+  },
+  "minPurchase": {
+    "amount": 100,
+    "scope": "per_invoice"
+  },
+  "maxRefund": null,
+  "operatorFeePct": null,
+  "stayDays": {
+    "min": 2,
+    "max": 60
+  },
+  "exitModes": ["air", "sea"],
+  "requiresAuthorizedStore": true,
+  "requiresIntentBeforeInvoice": true,
+  "eligibleGoods": ["taxed_goods"],
+  "excludedGoods": [],
+  "excludedServices": ["all_services"],
+  "requiredDocuments": [
+    "passport",
+    "andean_migration_card",
+    "purchase_invoices",
+    "tax_free_form",
+    "goods_for_inspection",
+    "payment_card"
+  ],
+  "refundPoints": [
+    {
+      "type": "airport",
+      "iata": "LIM",
+      "name": "Aeropuerto Internacional Jorge Chávez (Lima)"
+    }
+  ],
+  "notes": [
+    "Solo compras en establecimientos inscritos en el Registro de Establecimientos Autorizados (REA).",
+    "El turista debe manifestar su intención de pedir la devolución antes de que se emita la factura."
+  ],
+  "sources": [
+    {
+      "title": "SUNAT - Superintendencia Nacional de Aduanas y de Administración Tributaria",
+      "url": "https://www.sunat.gob.pe/",
+      "retrievedAt": null
+    }
+  ],
+  "lastVerified": null,
+  "version": 1,
+  "validFrom": "2026-01-01",
+  "needsVerification": true,
+  "verificationNotes": [
+    "Datos de ejemplo: ningún valor se ha contrastado con la fuente oficial.",
+    "Compra mínima de 100 PEN por factura, vías de salida y documentos: puestos de memoria, no vienen de los datos de partida.",
+    "Comisión de la entidad colaboradora: desconocida (operatorFeePct en null).",
+    "Lista de puntos de devolución: solo un aeropuerto de ejemplo.",
+    "Falta la URL de la norma y de la página oficial del trámite."
+  ]
+}

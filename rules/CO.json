@@ -1,0 +1,82 @@
+{
+  "$schema": "./schema.json",
+  "country": "CO",
+  "currency": "COP",
+  "taxName": "IVA",
+  "standardRate": 19,
+  "refundAuthority": {
+    "type": "tax_authority",
+    "name": "Dirección de Impuestos y Aduanas Nacionales (DIAN)"
+  },
+  "amountUnit": {
+    "type": "tax_unit",
+    "code": "UVT",
+    "name": "Unidad de Valor Tributario",
+    "value": 52374,
+    "year": 2026
+  },
+  "minPurchase": {
+    "amount": 3,
+    "scope": "per_invoice"
+  },
+  "maxRefund": {
+    "amount": 200,
+    "scope": "per_request"
+  },
+  "operatorFeePct": null,
+  "stayDays": {
+    "min": null,
+    "max": null
+  },
+  "exitModes": ["air", "sea", "land"],
+  "requiresAuthorizedStore": false,
+  "requiresIntentBeforeInvoice": false,
+  "eligibleGoods": ["taxed_goods"],
+  "excludedGoods": ["exempt_goods", "excluded_goods"],
+  "excludedServices": ["all_services"],
+  "requiredDocuments": [
+    "passport",
+    "dian_form_2737",
+    "purchase_invoices",
+    "migration_entry_record",
+    "goods_for_inspection"
+  ],
+  "refundPoints": [
+    {
+      "type": "airport",
+      "iata": "BOG",
+      "name": "Aeropuerto Internacional El Dorado (Bogotá)"
+    },
+    {
+      "type": "airport",
+      "iata": "MDE",
+      "name": "Aeropuerto Internacional José María Córdova (Rionegro)"
+    },
+    {
+      "type": "airport",
+      "iata": "CTG",
+      "name": "Aeropuerto Internacional Rafael Núñez (Cartagena)"
+    }
+  ],
+  "notes": [
+    "Aplica a turistas extranjeros no residentes en Colombia.",
+    "La solicitud se presenta con el formato 2737 en los puntos de atención de la DIAN en puertos, aeropuertos y fronteras."
+  ],
+  "sources": [
+    {
+      "title": "DIAN - Dirección de Impuestos y Aduanas Nacionales",
+      "url": "https://www.dian.gov.co/",
+      "retrievedAt": null
+    }
+  ],
+  "lastVerified": null,
+  "version": 1,
+  "validFrom": "2026-01-01",
+  "needsVerification": true,
+  "verificationNotes": [
+    "Datos de ejemplo: ningún valor se ha contrastado con la fuente oficial.",
+    "Valor de la UVT 2026 y compra mínima de 3 UVT por factura: puestos de memoria, no vienen de los datos de partida.",
+    "Lista de puntos de devolución: solo aeropuertos de ejemplo; faltan puertos y fronteras.",
+    "Falta la URL de la norma y de la página oficial del trámite."
+  ]
+}

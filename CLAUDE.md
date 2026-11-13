@@ -105,6 +105,13 @@ Backend (desde `backend/`):
 ./gradlew run                  # levantar la API en local
 ```
 
+Reglas (desde `rules/`, requiere Node; verificado):
+
+```
+npm install                    # una vez
+npm test                       # valida CO/PE/MX.json contra schema.json
+```
+
 Base de datos y despliegue local (desde `deploy/`):
 
 ```

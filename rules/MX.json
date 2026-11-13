@@ -1,0 +1,72 @@
+{
+  "$schema": "./schema.json",
+  "country": "MX",
+  "currency": "MXN",
+  "taxName": "IVA",
+  "standardRate": 16,
+  "refundAuthority": {
+    "type": "concessionaire",
+    "name": "Concesionarios autorizados por el Servicio de Administración Tributaria (SAT)"
+  },
+  "amountUnit": {
+    "type": "local_currency"
+  },
+  "minPurchase": {
+    "amount": 1200,
+    "scope": "per_store",
+    "electronicPaymentOnly": true
+  },
+  "maxRefund": null,
+  "operatorFeePct": 35,
+  "stayDays": {
+    "min": null,
+    "max": null
+  },
+  "exitModes": ["air", "sea"],
+  "requiresAuthorizedStore": true,
+  "requiresIntentBeforeInvoice": false,
+  "eligibleGoods": ["taxed_goods"],
+  "excludedGoods": [],
+  "excludedServices": ["all_services"],
+  "requiredDocuments": [
+    "passport",
+    "migration_form",
+    "purchase_invoices",
+    "boarding_pass",
+    "goods_for_inspection",
+    "payment_card"
+  ],
+  "refundPoints": [
+    {
+      "type": "airport",
+      "iata": "MEX",
+      "name": "Aeropuerto Internacional Benito Juárez (Ciudad de México)"
+    },
+    {
+      "type": "airport",
+      "iata": "CUN",
+      "name": "Aeropuerto Internacional de Cancún"
+    }
+  ],
+  "notes": [
+    "El mínimo de 1.200 MXN es por establecimiento y solo cuentan las compras pagadas por medios electrónicos.",
+    "El concesionario puede cobrar una comisión de hasta el 35 % del impuesto devuelto."
+  ],
+  "sources": [
+    {
+      "title": "SAT - Servicio de Administración Tributaria",
+      "url": "https://www.sat.gob.mx/",
+      "retrievedAt": null
+    }
+  ],
+  "lastVerified": null,
+  "version": 1,
+  "validFrom": "2026-01-01",
+  "needsVerification": true,
+  "verificationNotes": [
+    "Datos de ejemplo: ningún valor se ha contrastado con la fuente oficial.",
+    "requiresAuthorizedStore, documentos y servicios excluidos: puestos de memoria, no vienen de los datos de partida.",
+    "Lista de puntos de devolución: solo aeropuertos de ejemplo; faltan puertos marítimos.",
+    "Falta la URL de la norma y de la página oficial del trámite."
+  ]
+}

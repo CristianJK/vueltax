@@ -1,0 +1,300 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:vueltax:rules:schema",
+  "title": "Reglas de devolución de impuestos a turistas",
+  "description": "Describe las reglas de devolución de impuestos (IVA/IGV) a turistas extranjeros de un país. Solo datos públicos.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "country",
+    "currency",
+    "taxName",
+    "standardRate",
+    "refundAuthority",
+    "amountUnit",
+    "minPurchase",
+    "maxRefund",
+    "operatorFeePct",
+    "stayDays",
+    "exitModes",
+    "requiresAuthorizedStore",
+    "requiresIntentBeforeInvoice",
+    "eligibleGoods",
+    "excludedGoods",
+    "excludedServices",
+    "requiredDocuments",
+    "refundPoints",
+    "sources",
+    "lastVerified",
+    "version",
+    "validFrom",
+    "needsVerification"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Ruta al schema, para autocompletado en editores."
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "Código de país ISO 3166-1 alpha-2."
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "Moneda local, código ISO 4217."
+    },
+    "taxName": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Nombre del impuesto, por ejemplo IVA o IGV."
+    },
+    "standardRate": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Tasa general del impuesto, en porcentaje (19 significa 19 %)."
+    },
+    "refundAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "name"],
+      "properties": {
+        "type": {
+          "enum": ["tax_authority", "partner_entity", "concessionaire"],
+          "description": "tax_authority: autoridad tributaria; partner_entity: entidad colaboradora; concessionaire: concesionario."
+        },
+        "name": { "type": "string", "minLength": 1 }
+      }
+    },
+    "amountUnit": {
+      "type": "object",
+      "description": "Unidad en la que se expresan minPurchase.amount y maxRefund.amount.",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "enum": ["local_currency", "tax_unit"],
+          "description": "local_currency: moneda local (currency); tax_unit: unidad tributaria."
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Sigla de la unidad tributaria, por ejemplo UVT."
+        },
+        "name": { "type": "string", "minLength": 1 },
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Valor de una unidad tributaria en moneda local para el año indicado."
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 2000,
+          "description": "Año al que corresponde el valor de la unidad tributaria."
+        }
+      },
+      "if": {
+        "properties": { "type": { "const": "tax_unit" } }
+      },
+      "then": {
+        "required": ["code", "value", "year"]
+      },
+      "else": {
+        "properties": {
+          "code": false,
+          "name": false,
+          "value": false,
+          "year": false
+        }
+      }
+    },
+    "minPurchase": {
+      "description": "Compra mínima para acceder a la devolución; null si no hay mínimo.",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["amount", "scope"],
+          "properties": {
+            "amount": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "Monto expresado en amountUnit."
+            },
+            "scope": {
+              "enum": ["per_invoice", "per_store"],
+              "description": "per_invoice: por factura; per_store: por establecimiento."
+            },
+            "electronicPaymentOnly": {
+              "type": "boolean",
+              "description": "true si solo cuentan las compras pagadas por medios electrónicos."
+            }
+          }
+        }
+      ]
+    },
+    "maxRefund": {
+      "description": "Tope de la devolución; null si no hay tope.",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["amount", "scope"],
+          "properties": {
+            "amount": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "Monto expresado en amountUnit."
+            },
+            "scope": {
+              "enum": ["per_request"],
+              "description": "per_request: por solicitud."
+            }
+          }
+        }
+      ]
+    },
+    "operatorFeePct": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Comisión máxima del operador sobre el impuesto devuelto, en porcentaje; null si no aplica o no se conoce."
+    },
+    "stayDays": {
+      "type": "object",
+      "description": "Días de estadía exigidos; null en un extremo si no hay límite.",
+      "additionalProperties": false,
+      "required": ["min", "max"],
+      "properties": {
+        "min": { "type": ["integer", "null"], "minimum": 0 },
+        "max": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "exitModes": {
+      "type": "array",
+      "description": "Vías de salida del país por las que se permite la devolución.",
+      "items": { "enum": ["air", "sea", "land"] },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "requiresAuthorizedStore": {
+      "type": "boolean",
+      "description": "true si la compra debe hacerse en un establecimiento autorizado o inscrito."
+    },
+    "requiresIntentBeforeInvoice": {
+      "type": "boolean",
+      "description": "true si el turista debe manifestar su intención de pedir la devolución antes de que se emita la factura."
+    },
+    "eligibleGoods": {
+      "type": "array",
+      "description": "Categorías de bienes con derecho a devolución.",
+      "items": { "$ref": "#/$defs/slug" },
+      "uniqueItems": true
+    },
+    "excludedGoods": {
+      "type": "array",
+      "description": "Categorías de bienes sin derecho a devolución.",
+      "items": { "$ref": "#/$defs/slug" },
+      "uniqueItems": true
+    },
+    "excludedServices": {
+      "type": "array",
+      "description": "Categorías de servicios sin derecho a devolución.",
+      "items": { "$ref": "#/$defs/slug" },
+      "uniqueItems": true
+    },
+    "requiredDocuments": {
+      "type": "array",
+      "description": "Documentos que el turista debe presentar.",
+      "items": { "$ref": "#/$defs/slug" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "refundPoints": {
+      "type": "array",
+      "description": "Puntos donde se solicita la devolución.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "name"],
+        "properties": {
+          "type": { "enum": ["airport", "seaport", "land_border"] },
+          "iata": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$",
+            "description": "Código IATA del aeropuerto."
+          },
+          "name": { "type": "string", "minLength": 1 }
+        },
+        "if": {
+          "properties": { "type": { "const": "airport" } }
+        },
+        "then": {
+          "required": ["iata"]
+        },
+        "else": {
+          "properties": { "iata": false }
+        }
+      }
+    },
+    "notes": {
+      "type": "array",
+      "description": "Condiciones adicionales en texto libre.",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "sources": {
+      "type": "array",
+      "description": "Fuentes públicas de las que salen los datos.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "url", "retrievedAt"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri" },
+          "retrievedAt": {
+            "type": ["string", "null"],
+            "format": "date",
+            "description": "Fecha en que se consultó la fuente; null si aún no se ha consultado."
+          }
+        }
+      }
+    },
+    "lastVerified": {
+      "type": ["string", "null"],
+      "format": "date",
+      "description": "Fecha de la última verificación contra las fuentes; null si nunca se ha verificado."
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Versión de este archivo de reglas; aumenta con cada cambio."
+    },
+    "validFrom": {
+      "type": "string",
+      "format": "date",
+      "description": "Fecha desde la que aplican estas reglas."
+    },
+    "needsVerification": {
+      "type": "boolean",
+      "description": "true si los datos son de ejemplo o no se han contrastado con las fuentes."
+    },
+    "verificationNotes": {
+      "type": "array",
+      "description": "Qué falta verificar.",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$",
+      "description": "Identificador estable en snake_case; la app lo traduce a texto."
+    }
+  }
+}
