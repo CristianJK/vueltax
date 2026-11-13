@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="screen_placeholder">Tela em construção</string>
+    <string name="action_back">Voltar</string>
+
+    <string name="onboarding_title">Recupere o imposto das suas compras</string>
+    <string name="onboarding_body">Ajudamos você a preparar o reembolso de impostos da sua viagem. Seus dados pessoais ficam neste dispositivo.</string>
+    <string name="onboarding_start">Começar</string>
+
+    <string name="trip_title">Minha viagem</string>
+
+    <string name="purchases_title">Faturas</string>
+    <string name="purchases_open_sample">Abrir detalhe de exemplo</string>
+    <string name="purchase_detail_title">Detalhe da fatura</string>
+    <string name="purchase_detail_id">Fatura n.º %1$d</string>
+
+    <string name="refund_title">Painel de reembolso</string>
+    <string name="refund_tab">Reembolso</string>
+    <string name="refund_open_airport_mode">Abrir modo aeroporto</string>
+
+    <string name="converter_title">Conversor</string>
+
+    <string name="airport_mode_title">Modo aeroporto</string>
+
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_version">Versão %1$s</string>
+</resources>

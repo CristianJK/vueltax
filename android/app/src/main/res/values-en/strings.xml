@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="screen_placeholder">Screen under construction</string>
+    <string name="action_back">Back</string>
+
+    <string name="onboarding_title">Get the tax on your purchases back</string>
+    <string name="onboarding_body">We help you prepare the tax refund for your trip. Your personal data stays on this device.</string>
+    <string name="onboarding_start">Get started</string>
+
+    <string name="trip_title">My trip</string>
+
+    <string name="purchases_title">Invoices</string>
+    <string name="purchases_open_sample">Open sample detail</string>
+    <string name="purchase_detail_title">Invoice detail</string>
+    <string name="purchase_detail_id">Invoice no. %1$d</string>
+
+    <string name="refund_title">Refund dashboard</string>
+    <string name="refund_tab">Refund</string>
+    <string name="refund_open_airport_mode">Open airport mode</string>
+
+    <string name="converter_title">Converter</string>
+
+    <string name="airport_mode_title">Airport mode</string>
+
+    <string name="settings_title">Settings</string>
+    <string name="settings_version">Version %1$s</string>
+</resources>

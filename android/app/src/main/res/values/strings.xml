@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Vueltax</string>
+
+    <string name="screen_placeholder">Pantalla en construcción</string>
+    <string name="action_back">Volver</string>
+
+    <string name="onboarding_title">Recupera el impuesto de tus compras</string>
+    <string name="onboarding_body">Te ayudamos a preparar la devolución de impuestos de tu viaje. Tus datos personales se quedan en este dispositivo.</string>
+    <string name="onboarding_start">Empezar</string>
+
+    <string name="trip_title">Mi viaje</string>
+
+    <string name="purchases_title">Facturas</string>
+    <string name="purchases_open_sample">Abrir detalle de ejemplo</string>
+    <string name="purchase_detail_title">Detalle de factura</string>
+    <string name="purchase_detail_id">Factura n.º %1$d</string>
+
+    <string name="refund_title">Panel de devolución</string>
+    <string name="refund_tab">Devolución</string>
+    <string name="refund_open_airport_mode">Abrir modo aeropuerto</string>
+
+    <string name="converter_title">Conversor</string>
+
+    <string name="airport_mode_title">Modo aeropuerto</string>
+
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_version">Versión %1$s</string>
+</resources>

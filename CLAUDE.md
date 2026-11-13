@@ -87,15 +87,17 @@ No se escribe el literal `"Vueltax"` en ningún otro punto del código.
 
 ## Comandos
 
-> El módulo `android/` aún no existe; sus comandos son los previstos y deben
-> verificarse (y corregirse aquí) cuando se cree.
-
-Android (desde `android/`):
+Android (desde `android/`, JDK 17+ y Android SDK; **sin verificar**: el proyecto se escribió
+sin poder compilarlo, corregir aquí lo que falle):
 
 ```
 ./gradlew assembleDebug        # compilar
-./gradlew test                 # pruebas unitarias
+./gradlew test                 # pruebas unitarias (módulos domain y app)
+./gradlew ktlintCheck detekt   # estilo y análisis estático
 ```
+
+La URL de la API se configura con `API_BASE_URL` en `android/local.properties` (ver
+`android/local.properties.example`).
 
 Backend (desde `backend/`, JDK 17+; verificado):
 
