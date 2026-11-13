@@ -1,0 +1,17 @@
+<configuration>
+    <!-- Los logs no llevan IP, cabeceras ni query strings: ver CallLogging en Plugins.kt. -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5level %logger{24} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+    <!-- En DEBUG, Exposed escribe las sentencias SQL con sus parámetros. -->
+    <logger name="Exposed" level="WARN"/>
+    <logger name="io.netty" level="WARN"/>
+    <logger name="com.zaxxer.hikari" level="WARN"/>
+</configuration>

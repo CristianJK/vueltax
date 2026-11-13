@@ -1,0 +1,7 @@
+# El contexto de build del backend es la raíz del repo; solo hacen falta backend/ y rules/schema.json.
+*
+!backend/
+!rules/schema.json
+backend/build/
+backend/.gradle/
+backend/.kotlin/
