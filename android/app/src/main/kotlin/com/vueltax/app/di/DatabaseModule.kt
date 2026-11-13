@@ -22,8 +22,6 @@ import net.zetetic.database.sqlcipher.SupportOpenHelperFactory
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
-    private const val DATABASE_NAME = "app.db"
-
     @Provides
     @Singleton
     fun provideDatabase(
@@ -31,7 +29,7 @@ object DatabaseModule {
         passphraseProvider: DatabasePassphraseProvider,
     ): AppDatabase {
         System.loadLibrary("sqlcipher")
-        return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
+        return Room.databaseBuilder(context, AppDatabase::class.java, DatabasePassphraseProvider.DATABASE_NAME)
             .openHelperFactory(SupportOpenHelperFactory(passphraseProvider.get()))
             .build()
     }

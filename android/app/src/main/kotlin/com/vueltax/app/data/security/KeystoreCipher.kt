@@ -27,6 +27,11 @@ class KeystoreCipher(private val keyAlias: String) {
         return cipher.doFinal(encrypted, GCM_IV_BYTES, encrypted.size - GCM_IV_BYTES)
     }
 
+    /** Borra la clave; lo cifrado con ella deja de poder leerse. */
+    fun deleteKey() {
+        KeyStore.getInstance(ANDROID_KEYSTORE).apply { load(null) }.deleteEntry(keyAlias)
+    }
+
     private fun key(): SecretKey {
         val keyStore = KeyStore.getInstance(ANDROID_KEYSTORE).apply { load(null) }
         val existing = keyStore.getKey(keyAlias, null) as? SecretKey

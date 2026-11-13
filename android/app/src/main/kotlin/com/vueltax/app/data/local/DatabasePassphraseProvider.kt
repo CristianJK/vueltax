@@ -2,9 +2,11 @@ package com.vueltax.app.data.local
 
 import android.content.Context
 import android.util.Base64
+import android.util.Log
 import com.vueltax.app.data.security.KeystoreCipher
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.security.SecureRandom
+import javax.crypto.AEADBadTagException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,7 +24,17 @@ class DatabasePassphraseProvider @Inject constructor(
     fun get(): ByteArray {
         val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
         val stored = prefs.getString(KEY_PASSPHRASE, null)
-        if (stored != null) return cipher.decrypt(Base64.decode(stored, Base64.NO_WRAP))
+        if (stored != null) {
+            try {
+                return cipher.decrypt(Base64.decode(stored, Base64.NO_WRAP))
+            } catch (e: AEADBadTagException) {
+                // La clave de Keystore ya no es la que cifró la contraseña (por ejemplo, el
+                // sistema la borró): la base de datos es irrecuperable y se empieza de cero.
+                Log.w(TAG, "Clave de la base de datos ilegible; se reinicia la base de datos", e)
+                cipher.deleteKey()
+                context.deleteDatabase(DATABASE_NAME)
+            }
+        }
 
         val passphrase = newPassphrase()
         val encrypted = Base64.encodeToString(cipher.encrypt(passphrase), Base64.NO_WRAP)
@@ -38,10 +50,12 @@ class DatabasePassphraseProvider @Inject constructor(
         return random.joinToString("") { "%02x".format(it) }.toByteArray(Charsets.US_ASCII)
     }
 
-    private companion object {
-        const val PREFS_NAME = "database_key"
-        const val KEY_PASSPHRASE = "passphrase"
-        const val KEY_ALIAS = "database_passphrase_key"
-        const val PASSPHRASE_RANDOM_BYTES = 32
+    companion object {
+        const val DATABASE_NAME = "app.db"
+        private const val TAG = "DatabasePassphrase"
+        private const val PREFS_NAME = "database_key"
+        private const val KEY_PASSPHRASE = "passphrase"
+        private const val KEY_ALIAS = "database_passphrase_key"
+        private const val PASSPHRASE_RANDOM_BYTES = 32
     }
 }
