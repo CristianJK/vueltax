@@ -20,6 +20,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.vueltax.app.ui.aeropuerto.ModoAeropuertoScreen
 import com.vueltax.app.ui.ajustes.AjustesScreen
+import com.vueltax.app.ui.captura.CapturaScreen
 import com.vueltax.app.ui.conversor.ConversorScreen
 import com.vueltax.app.ui.devolucion.PanelDevolucionScreen
 import com.vueltax.app.ui.facturas.DetalleFacturaScreen
@@ -93,6 +94,7 @@ private fun NavGraphBuilder.tabDestinations(navController: NavHostController) {
     composable(Destination.MiViaje.route) { MiViajeScreen() }
     composable(Destination.Facturas.route) {
         FacturasScreen(
+            onAddPurchase = { navController.navigate(Destination.Captura.route) },
             onOpenPurchase = { id -> navController.navigate(Destination.DetalleFactura.route(id)) },
         )
     }
@@ -116,6 +118,9 @@ private fun NavGraphBuilder.detailDestinations(navController: NavHostController)
             purchaseId = entry.arguments?.getLong(Destination.DetalleFactura.PURCHASE_ID) ?: 0L,
             onBack = { navController.popBackStack() },
         )
+    }
+    composable(Destination.Captura.route) {
+        CapturaScreen(onDone = { navController.popBackStack() })
     }
     composable(Destination.ModoAeropuerto.route) {
         ModoAeropuertoScreen(onBack = { navController.popBackStack() })

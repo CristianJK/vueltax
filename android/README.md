@@ -10,8 +10,28 @@ App en Kotlin con Jetpack Compose. Paquete `com.vueltax.app`, minSdk 26, targetS
   - `ui/`: pantallas Compose, navegación y tema.
   - `data/`: Room cifrado con SQLCipher (`local`), cliente Retrofit de la API pública
     (`remote`) y sincronización con WorkManager (`sync`).
-  - `capture/`: se añadirá con la captura de facturas.
+  - `capture/`: captura de facturas con CameraX y ML Kit, siempre en el dispositivo:
+    parsers de QR por país (`parser`), OCR (`ocr`), cámara (`camera`), fotos cifradas
+    (`storage`) y borrador en revisión (`review`).
   - `di/`: módulos de Hilt.
+
+## Motor de reglas (`domain/rules`)
+
+- `RuleSet.parse(json)`: el mismo modelo que `rules/schema.json`.
+- `evaluateTraveler`, `evaluatePurchase` y `estimateRefund`: elegibilidad del viajero, si
+  una factura califica (con «te faltan X para el mínimo») y estimación de la devolución.
+- Todo el dinero es `BigDecimal`. Los motivos traen un texto en español; la traducción a
+  otros idiomas está pendiente.
+
+## Formatos de QR de factura
+
+| País | Especificación usada | Qué trae el QR |
+| ---- | -------------------- | -------------- |
+| CO | Anexo Técnico de Factura Electrónica de Venta v1.9 (Resolución DIAN 000165 de 2023), numeral 11.1.7 | Número, fecha, NIT, valor, IVA, total, CUFE |
+| PE | Anexo C de la RS 113-2018/SUNAT, «Código de barras QR» | RUC, tipo, serie, número, IGV, total, fecha |
+| MX | Anexo 20 de la RMF 2022 (DOF 13-01-2022), apartado D | UUID, RFC emisor, total; **no trae IVA ni fecha** |
+
+El documento del comprador que traen los tres QR se descarta al leerlos.
 
 ## Configuración
 
@@ -35,3 +55,8 @@ solo se permite HTTP en claro hacia el host de esa URL; release exige HTTPS.
 - Las copias de seguridad y la transferencia entre dispositivos están desactivadas.
 - El cliente HTTP solo hace GET: `GetOnlyInterceptor` bloquea cualquier otro método y
   `PublicApiPrivacyTest` comprueba que la interfaz no declare envíos de datos.
+- Las fotos de facturas se guardan cifradas (AES-GCM, clave en Android Keystore) en el
+  almacenamiento interno, nunca en la galería.
+- ML Kit lee códigos y texto con modelos incluidos en la app, sin enviar imágenes. Pendiente
+  de revisar: las bibliotecas de ML Kit pueden enviar a Google métricas de uso propias (no
+  el contenido); hay que confirmar si eso es aceptable para la regla de privacidad.

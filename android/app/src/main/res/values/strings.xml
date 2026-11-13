@@ -26,4 +26,42 @@
 
     <string name="settings_title">Ajustes</string>
     <string name="settings_version">Versión %1$s</string>
+
+    <!-- Captura y revisión de facturas -->
+    <string name="purchases_add">Añadir factura</string>
+    <string name="capture_title">Añadir factura</string>
+    <string name="capture_country">País de la compra</string>
+    <string name="capture_scan_hint">Apunta al código QR de la factura o toma una foto del tiquete.</string>
+    <string name="capture_take_photo">Tomar foto del tiquete</string>
+    <string name="capture_enter_manually">Ingresar los datos a mano</string>
+    <string name="capture_camera_permission">Se necesita permiso de cámara para escanear la factura. La imagen no sale de este dispositivo.</string>
+    <string name="capture_grant_permission">Dar permiso</string>
+    <string name="capture_qr_unknown">Ese código no es de una factura reconocida.</string>
+    <string name="capture_processing">Leyendo…</string>
+    <string name="review_title">Revisa la factura</string>
+    <string name="review_photo_saved">La foto quedó guardada cifrada en este dispositivo.</string>
+    <string name="review_store">Comercio</string>
+    <string name="review_number">Número de factura</string>
+    <string name="review_date">Fecha (AAAA-MM-DD)</string>
+    <string name="review_total">Total</string>
+    <string name="review_tax">Impuesto</string>
+    <string name="review_kind">Tipo de compra</string>
+    <string name="review_kind_goods">Bien</string>
+    <string name="review_kind_service">Servicio</string>
+    <string name="review_category">Categoría</string>
+    <string name="review_paid_electronically">¿Pagaste por un medio electrónico?</string>
+    <string name="review_authorized_store">¿El establecimiento está autorizado?</string>
+    <string name="review_intent">¿Pediste la devolución antes de la factura?</string>
+    <string name="option_yes">Sí</string>
+    <string name="option_no">No</string>
+    <string name="option_unknown">No sé</string>
+    <string name="review_result_title">Resultado</string>
+    <string name="review_result_qualified">Esta factura califica. Impuesto recuperable estimado: %1$s</string>
+    <string name="review_result_not_qualified">Esta factura no califica:</string>
+    <string name="review_result_needs_info">Falta indicar:</string>
+    <string name="review_result_incomplete">Completa el total y la fecha para evaluar la factura.</string>
+    <string name="review_result_no_rules">Aún no se han descargado las reglas de este país.</string>
+    <string name="review_no_trip">Crea primero tu viaje a este país para poder guardar la factura.</string>
+    <string name="review_save">Guardar</string>
+    <string name="review_discard">Descartar</string>
 </resources>

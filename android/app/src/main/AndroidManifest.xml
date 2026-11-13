@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <!-- Sin copias de seguridad: los datos personales no salen del dispositivo y la clave
          de la base de datos (Android Keystore) no se puede restaurar en otro equipo. -->

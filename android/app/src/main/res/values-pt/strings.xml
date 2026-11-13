@@ -24,4 +24,42 @@
 
     <string name="settings_title">Ajustes</string>
     <string name="settings_version">Versão %1$s</string>
+
+    <!-- Captura y revisión de facturas -->
+    <string name="purchases_add">Adicionar fatura</string>
+    <string name="capture_title">Adicionar fatura</string>
+    <string name="capture_country">País da compra</string>
+    <string name="capture_scan_hint">Aponte para o código QR da fatura ou tire uma foto do cupom.</string>
+    <string name="capture_take_photo">Tirar foto do cupom</string>
+    <string name="capture_enter_manually">Inserir os dados manualmente</string>
+    <string name="capture_camera_permission">É necessária a permissão da câmera para escanear a fatura. A imagem não sai deste dispositivo.</string>
+    <string name="capture_grant_permission">Dar permissão</string>
+    <string name="capture_qr_unknown">Esse código não é de uma fatura reconhecida.</string>
+    <string name="capture_processing">Lendo…</string>
+    <string name="review_title">Revise a fatura</string>
+    <string name="review_photo_saved">A foto foi salva criptografada neste dispositivo.</string>
+    <string name="review_store">Loja</string>
+    <string name="review_number">Número da fatura</string>
+    <string name="review_date">Data (AAAA-MM-DD)</string>
+    <string name="review_total">Total</string>
+    <string name="review_tax">Imposto</string>
+    <string name="review_kind">Tipo de compra</string>
+    <string name="review_kind_goods">Bem</string>
+    <string name="review_kind_service">Serviço</string>
+    <string name="review_category">Categoria</string>
+    <string name="review_paid_electronically">Você pagou por meio eletrônico?</string>
+    <string name="review_authorized_store">A loja é autorizada?</string>
+    <string name="review_intent">Você pediu o reembolso antes da emissão da fatura?</string>
+    <string name="option_yes">Sim</string>
+    <string name="option_no">Não</string>
+    <string name="option_unknown">Não sei</string>
+    <string name="review_result_title">Resultado</string>
+    <string name="review_result_qualified">Esta fatura se qualifica. Imposto recuperável estimado: %1$s</string>
+    <string name="review_result_not_qualified">Esta fatura não se qualifica:</string>
+    <string name="review_result_needs_info">Falta informar:</string>
+    <string name="review_result_incomplete">Preencha o total e a data para avaliar a fatura.</string>
+    <string name="review_result_no_rules">As regras deste país ainda não foram baixadas.</string>
+    <string name="review_no_trip">Crie primeiro a sua viagem a este país para poder salvar a fatura.</string>
+    <string name="review_save">Salvar</string>
+    <string name="review_discard">Descartar</string>
 </resources>

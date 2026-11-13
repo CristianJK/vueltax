@@ -24,4 +24,42 @@
 
     <string name="settings_title">Settings</string>
     <string name="settings_version">Version %1$s</string>
+
+    <!-- Captura y revisión de facturas -->
+    <string name="purchases_add">Add invoice</string>
+    <string name="capture_title">Add invoice</string>
+    <string name="capture_country">Country of purchase</string>
+    <string name="capture_scan_hint">Point at the invoice QR code or take a photo of the receipt.</string>
+    <string name="capture_take_photo">Take a photo of the receipt</string>
+    <string name="capture_enter_manually">Enter the details by hand</string>
+    <string name="capture_camera_permission">Camera permission is needed to scan the invoice. The image never leaves this device.</string>
+    <string name="capture_grant_permission">Grant permission</string>
+    <string name="capture_qr_unknown">That code is not from a recognized invoice.</string>
+    <string name="capture_processing">Reading…</string>
+    <string name="review_title">Review the invoice</string>
+    <string name="review_photo_saved">The photo was saved encrypted on this device.</string>
+    <string name="review_store">Store</string>
+    <string name="review_number">Invoice number</string>
+    <string name="review_date">Date (YYYY-MM-DD)</string>
+    <string name="review_total">Total</string>
+    <string name="review_tax">Tax</string>
+    <string name="review_kind">Type of purchase</string>
+    <string name="review_kind_goods">Goods</string>
+    <string name="review_kind_service">Service</string>
+    <string name="review_category">Category</string>
+    <string name="review_paid_electronically">Did you pay electronically?</string>
+    <string name="review_authorized_store">Is the store authorized?</string>
+    <string name="review_intent">Did you ask for the refund before the invoice was issued?</string>
+    <string name="option_yes">Yes</string>
+    <string name="option_no">No</string>
+    <string name="option_unknown">Not sure</string>
+    <string name="review_result_title">Result</string>
+    <string name="review_result_qualified">This invoice qualifies. Estimated recoverable tax: %1$s</string>
+    <string name="review_result_not_qualified">This invoice does not qualify:</string>
+    <string name="review_result_needs_info">Still needed:</string>
+    <string name="review_result_incomplete">Fill in the total and the date to evaluate the invoice.</string>
+    <string name="review_result_no_rules">The rules for this country have not been downloaded yet.</string>
+    <string name="review_no_trip">Create your trip to this country first to be able to save the invoice.</string>
+    <string name="review_save">Save</string>
+    <string name="review_discard">Discard</string>
 </resources>

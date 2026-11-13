@@ -23,6 +23,8 @@ sealed class Destination(val route: String) {
         fun route(purchaseId: Long): String = "facturas/$purchaseId"
     }
 
+    data object Captura : Destination("captura")
+
     data object PanelDevolucion : Destination("panel_devolucion")
 
     data object Conversor : Destination("conversor")

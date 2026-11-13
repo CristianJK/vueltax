@@ -6,7 +6,8 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 // Datos personales del usuario: solo existen en la base de datos cifrada del dispositivo.
-// Las fechas se guardan como texto ISO-8601 (YYYY-MM-DD) y los enums por su nombre.
+// Las fechas se guardan como texto ISO-8601 (YYYY-MM-DD), los enums por su nombre y los
+// montos en unidades menores de la moneda (centavos). Un campo en null aún no se conoce.
 
 @Entity(tableName = "trip")
 data class TripEntity(
@@ -46,10 +47,15 @@ data class PurchaseEntity(
     val invoiceNumber: String,
     val purchaseDate: String,
     val totalMinor: Long,
-    val taxMinor: Long,
+    val taxMinor: Long?,
     val currency: String,
+    val kind: String?,
     val category: String?,
-    val paidElectronically: Boolean,
+    val paidElectronically: Boolean?,
+    val authorizedStore: Boolean?,
+    val intentDeclaredBeforeInvoice: Boolean?,
+    val issuerTaxId: String?,
+    val documentKey: String?,
     val imagePath: String?,
 )
 

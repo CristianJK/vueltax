@@ -13,6 +13,9 @@ interface TripDao {
     @Query("SELECT * FROM trip ORDER BY arrivalDate DESC")
     fun observeAll(): Flow<List<TripEntity>>
 
+    @Query("SELECT * FROM trip WHERE countryCode = :countryCode ORDER BY arrivalDate DESC LIMIT 1")
+    suspend fun latestForCountry(countryCode: String): TripEntity?
+
     @Query("DELETE FROM trip WHERE id = :id")
     suspend fun delete(id: Long)
 }
@@ -33,6 +36,9 @@ interface PurchaseDao {
 
     @Query("SELECT * FROM purchase WHERE tripId = :tripId ORDER BY purchaseDate DESC")
     fun observeByTrip(tripId: Long): Flow<List<PurchaseEntity>>
+
+    @Query("SELECT * FROM purchase WHERE tripId = :tripId")
+    suspend fun listByTrip(tripId: Long): List<PurchaseEntity>
 
     @Query("SELECT * FROM purchase WHERE id = :id")
     suspend fun get(id: Long): PurchaseEntity?
