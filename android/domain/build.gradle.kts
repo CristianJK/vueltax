@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 // Kotlin puro: este módulo no puede depender de Android.
 plugins {
     alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ktlint)
 }
 
@@ -18,5 +19,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(libs.kotlinx.serialization.json)
+
     testImplementation(libs.junit)
 }

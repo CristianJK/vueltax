@@ -1,18 +1,13 @@
 package com.vueltax.domain.model
 
+import java.math.BigDecimal
 import java.time.LocalDate
 
-/** Reglas de devolución de un país, tal como las publica la API (JSON de `rules/schema.json`). */
-data class RuleSet(
-    val countryCode: String,
-    val version: Int,
-    val contentJson: String,
-)
-
+/** Cuántas unidades de [quote] vale una unidad de [base] en [date]. */
 data class ExchangeRate(
     val base: String,
     val quote: String,
-    val rate: Double,
+    val rate: BigDecimal,
     val date: LocalDate,
     val source: String,
 )

@@ -2,8 +2,21 @@ package com.vueltax.domain.model
 
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-enum class ExitMode { AIR, SEA, LAND }
+/** Vía de salida del país; los nombres serializados son los de `rules/schema.json`. */
+@Serializable
+enum class ExitMode {
+    @SerialName("air")
+    AIR,
+
+    @SerialName("sea")
+    SEA,
+
+    @SerialName("land")
+    LAND,
+}
 
 data class Trip(
     val id: Long = 0,
